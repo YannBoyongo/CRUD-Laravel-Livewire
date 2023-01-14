@@ -1,27 +1,27 @@
 <div>
     <div class="col-md-8 mb-2">
-        @if(session()->has('success'))
+        @if (session()->has('success'))
             <div class="alert alert-success" role="alert">
                 {{ session()->get('success') }}
             </div>
         @endif
-        @if(session()->has('error'))
+        @if (session()->has('error'))
             <div class="alert alert-danger" role="alert">
                 {{ session()->get('error') }}
             </div>
         @endif
-        @if($addPost)
+        @if ($addPost)
             @include('livewire.create')
         @endif
-        @if($updatePost)
+        @if ($updatePost)
             @include('livewire.update')
         @endif
     </div>
     <div class="col-md-8">
         <div class="card">
             <div class="card-body">
-                @if(!$addPost)
-                <button wire:click="addPost()" class="btn btn-primary btn-sm float-right">Add New Post</button>
+                @if (!$addPost)
+                    <button wire:click="addPost()" class="btn btn-primary btn-sm float-right">Add New Post</button>
                 @endif
                 <div class="table-responsive">
                     <table class="table">
@@ -37,14 +37,16 @@
                                 @foreach ($posts as $post)
                                     <tr>
                                         <td>
-                                            {{$post->title}}
+                                            {{ $post->title }}
                                         </td>
                                         <td>
-                                            {{$post->description}}
+                                            {{ $post->description }}
                                         </td>
                                         <td>
-                                            <button wire:click="editPost({{$post->id}})" class="btn btn-primary btn-sm">Edit</button>
-                                            <button onclick="deletePost({{$post->id}})" class="btn btn-danger btn-sm">Delete</button>
+                                            <button wire:click="editPost({{ $post->id }})"
+                                                class="btn btn-primary btn-sm">Edit</button>
+                                            <button wire:click="deletePost({{ $post->id }})"
+                                                class="btn btn-danger btn-sm">Delete</button>
                                         </td>
                                     </tr>
                                 @endforeach
@@ -61,5 +63,5 @@
             </div>
         </div>
     </div>
- 
+
 </div>
